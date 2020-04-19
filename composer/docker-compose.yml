@@ -1,7 +1,6 @@
+version: '3'
 locator:
   image: apachegeode/geode
-  hostname: locator
-  mem_limit: 512m
   expose:
    - "10334"
    - "1099"
@@ -18,9 +17,6 @@ locator:
 
 server:
   image: apachegeode/geode
-  mem_limit: 2g
-  links:
-   - locator:locator
   expose:
    - "8080"
    - "40404"
