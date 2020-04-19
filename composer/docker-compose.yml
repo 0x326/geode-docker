@@ -1,28 +1,29 @@
 version: '3'
-locator:
-  image: apachegeode/geode
-  expose:
-   - "10334"
-   - "1099"
-   - "7575"
-  #  - "1024"
-  ports:
-   - "1099:1099"
-   - "10334:10334"
-   - "7575:7575"
-   - "7070:7070"
-  volumes:
-   - ./scripts/:/scripts/
-  command: /scripts/gfshWrapper.sh gfsh start locator --name=locator --mcast-port=0
+services:
+  locator:
+    image: apachegeode/geode
+    expose:
+     - "10334"
+     - "1099"
+     - "7575"
+    #  - "1024"
+    ports:
+     - "1099:1099"
+     - "10334:10334"
+     - "7575:7575"
+     - "7070:7070"
+    volumes:
+     - ./scripts/:/scripts/
+    command: /scripts/gfshWrapper.sh gfsh start locator --name=locator --mcast-port=0
 
-server:
-  image: apachegeode/geode
-  expose:
-   - "8080"
-   - "40404"
-   - "1099"
-  ports:
-   - "40404"
-  volumes:
-   - ./scripts/:/scripts/
-  command: /scripts/startServer.sh --server-port=40404 --max-heap=1G
+  server:
+    image: apachegeode/geode
+    expose:
+     - "8080"
+     - "40404"
+     - "1099"
+    ports:
+     - "40404"
+    volumes:
+     - ./scripts/:/scripts/
+    command: /scripts/startServer.sh --server-port=40404 --max-heap=1G
