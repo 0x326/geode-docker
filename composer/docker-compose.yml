@@ -17,7 +17,7 @@ services:
     command: /scripts/gfshWrapper.sh gfsh start locator --name=locator --mcast-port=0
 
   server:
-    image: apachegeode/geode
+    build: .
     expose:
      - "8080"
      - "40404"
